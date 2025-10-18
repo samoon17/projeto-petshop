@@ -2,7 +2,7 @@ body{
     margin: 0;
     padding: 0;
     font-family: 'Times New Roman', Times, serif;
-    background-image: url(../img/fundo.png);
+    background-image: url(../projeto-petshop/img/fundo.png);
     background-size:cover ;
 }
 .container{
@@ -40,6 +40,12 @@ body{
     font: 1rem;
 }
 
+fieldset{
+    border: 4px solid #e4aaf3;
+    padding: 10px;
+    border-radius: 10px;
+}
+
 .cadastro-form button{
     padding: 12px 25px;
     background-color: #e4aaf3;
@@ -51,10 +57,47 @@ body{
 }
 
 
-.select{
-    width: 80px;
+select{
+    width: 80%;
     padding: 12px 20px;
-    border-radius: 2px solid #ccc;
+    border-radius: 10px ;
     margin-bottom: 15px;
     font-size: 1rem;
+    border: 3px solid #ccc;
+}
+
+label {
+margin-right:9px ;
+font-size: 18px;
+letter-spacing: -1px;
+display: inline-block;
+margin-bottom: 8px;
+font-size: 1rem;
+font-weight: bold;
+}
+*{
+    box-sizing: border-box;
+}
+
+/*---------------------- RESPONSIVO ----------------------*/
+
+@media (max-width:1600px) {
+    .container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    body{
+        background-size: 1000px;
+    }
+}
+
+@media (max-width: 600px) {
+    
+    .container{
+        width: 100%;
+        min-height: 70vh;
+        padding: 10px;
+    }
+    
 }
