@@ -1,0 +1,257 @@
+/* ----------------- RESET E FUNDO ----------------- */
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url(../img/fundo.png);
+  background-size: 1000px;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+ 
+
+}
+
+
+/* ----------------- CONTAINER PRINCIPAL ----------------- */
+.container {
+  width: 100%;           /* largura relativa à tela */
+  max-width: 1600px;    /* limita em telas grandes */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+}
+
+
+
+
+/* ----------------- LOGIN FORM ----------------- */
+.login-form {
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  margin-top: -160px;
+}
+
+.login-form h1 {
+  margin-bottom: 15px;
+  padding: 20px;
+  font-size: 2rem;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+  margin: -5px;
+}
+
+.login-form button {
+  padding: 12px 25px;
+  background-color: #e46af3;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  
+  
+}
+
+.login-form button:hover {
+  background-color: #d148e2;
+}
+
+.login-form a {
+  color: #e46af3;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ----------------- LOGO ----------------- */
+.logo {
+  
+  margin-bottom: 10px;
+
+}
+
+/* ----------------- FIELDSET ----------------- */
+fieldset {
+  border: 4px solid #e46af3;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* ----------------- CADASTRO FORM ----------------- */
+.cadastro-form {
+  width: 100%;
+  height: 50%;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 10px;
+  text-align: center;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+ 
+
+}
+
+
+.cadastro-form h2 {
+  margin-bottom: 5px;
+  font-size: 2.5rem;
+
+}
+
+.cadastro-form input[type="text"],
+.cadastro-form input[type="email"],
+.cadastro-form input[type="tel"],
+.cadastro-form input[type="password"] {
+  width: 80%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 2px solid #ccc;
+  font-size: 1rem;
+}
+
+.cadastro-form button {
+  padding: 12px 25px;
+  background-color: #e46af3;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+ 
+}
+
+
+
+.select {
+  width: 80%;
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: 3px solid #ccc;
+  margin-bottom: 15px;
+  font-size: 1rem;
+
+}
+
+/* ----------------- LABELS ----------------- */
+
+
+label {
+  margin-right: 9px; 
+  font-size: 18px;
+  letter-spacing: -1px;
+  display: inline-block;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  
+}
+
+
+/* ----------------- RESPONSIVO ----------------- */
+
+  @media (max-width: 1600px) {
+  .container {
+    width: 100%;
+    padding: 20px;
+  }
+
+  body{
+  background-size: 1000px;
+
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 100%;
+    min-height: 70vh;
+    padding: 10px;
+  }
+
+  .login-form h1,
+  .cadastro-form h2 {
+    font-size: 1.5rem;
+  }
+
+  .cadastro-form input,
+  .cadastro-form button,
+  .login-form input,
+  .login-form button,
+  .select {
+    width: 100%;
+    margin-bottom: 4px;
+  
+  }
+
+label.radio-label {
+  display: block;   /* cada label+radio vai para linha nova */
+  margin-bottom: 8px;
+  
+}
+
+@media (max-width: 480px) {
+  .container {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+  }
+
+  .cadastro-form input,
+  .cadastro-form select,
+  .cadastro-form button {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .login-form input,
+  .cadastro-form button {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+}
+
+/* Estilos para tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+    
+}
+
+
+}
+@media (min-width: 162px) and (max-width: 197px)  {
+  .container {
+    width: 100%;
+    padding: 20px;
+  }
+
+  body{
+  background-size: 1000px;
+
+  }
+}

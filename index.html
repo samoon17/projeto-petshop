@@ -1,25 +1,36 @@
 <!DOCTYPE html>
-<html>
-<head><title>Sistema de Login</title>
-   <link rel="stylesheet" href="estilo.css">
+<html lang="pt-br">
 
-
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema PET</title>
+  <link rel="stylesheet" href="./css/estilo.css">
 </head>
+
 <body>
-<form>
-   <div class="container">
-      
+
+  <form id="cadastroForm" action="login.php" method="get" enctype="multipart/form-data">
+  <div class="container">
+    <div class="logo"><img src="./img/logo.png " width="700px">
+    </div>
+   
+
       <div class="login-form">
-         
-<fieldset>
-  <p><h1>Seja Bem Vindo!!!!</h1></p><!-- Esse é um titulo-->
-  <input type="text" placeholder ="Nome"  ></br></br>
-  <input type="password" placeholder="senha" required>  </br>  </br> 
-   <button type="submit">Entrar</button>
-  <p> Não tem uma conta? Registre-se <a href="cadastro.html">Registre-se</a></p>
-</fieldset>
-</div>
-</div>
+        <fieldset>
+
+          <h2>Seja bem Vindo</h2>
+          <input type="text" id="nome" name="nome" placeholder="Nome"></br></br>
+          <input type="password" id="nome" name="senha" placeholder="Senha" required></br></br>
+          <button type="submit">Entrar</button>
+          <p> <strong> Não tem conta? <a href="cadastro.html"> Registre-se</a></strong></p>
+
+        </fieldset>
+    
+
+  </div>
+  </div>
 </form>
 </body>
+
 </html>

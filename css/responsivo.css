@@ -1,0 +1,50 @@
+/* Estilo padrão (desktop grandes) */
+.container {
+  max-width: 1600px;   /* largura máxima */
+  width: 90%; 
+  margin: 0 auto;      /* centraliza */
+  padding: 20px;
+
+}
+
+
+.cadastro-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* espaço entre os campos */
+}
+
+.cadastro-form input,
+.cadastro-form select,
+.cadastro-form button {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+
+/* Tablets e telas médias (até 1024px) */
+@media (max-width: 1024px) {
+  .container {
+    max-width: 90%;   /* ocupa 90% da tela */
+    padding: 15px;
+  }
+}
+
+/* Celulares (até 600px) */
+@media (max-width: 600px) {
+  .container {
+    max-width: 100%;   /* ocupa 100% da tela */
+    padding: 10px;
+  }
+
+  .container h1 {
+    font-size: 1.2rem; /* diminui título */
+  }
+
+  .container input, .container button {
+    width: 100%;       /* inputs e botões ocupam a tela toda */
+    margin-bottom: 10px;
+  }
+}

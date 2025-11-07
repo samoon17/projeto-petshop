@@ -1,63 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="cadastro.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Página de Cadastro</title>
+<link rel="stylesheet" href="./css/estilo.css">
 </head>
-
 <body>
 
-  <form>
-    <div class="container">
-      <div class="cadastro-form">
-        <fieldset>
-          
-          <p>
-          <h2>Cadastro</h2>
-          </p><!-- Esse é um titulo-->
-          <input type="text" placeholder="nome"><br><br>
-          <input type="text" placeholder="Endereço">
-          <input type="tel" placeholder="(99)9999-9999">
-          <input type="email" placeholder="email" required>
-          <input type="password" placeholder="senha" required>
-          <input type="password" placeholder="Confirma senha" required>
+<form method="post" action="cadastrar.php" enctype="multipart/form-data">
+    <div class="container">          
+        <div class="cadastro-form">
+            <fieldset class="fieldset">      
+                <h2>Cadastro</h2>
+                <input type="text" id="nome_usuario" name="nome_usuario" placeholder="Nome completo" required>
+                <input type="text" id="endereco" name="endereco" placeholder="Endereço" required>
+                <input type="tel" id="telefone" name="telefone" placeholder="(99) 99999-9999" maxlength="15" required>    
+                <input type="email" id="email" name="email" placeholder="Email" required>
+                <input type="password" id="senha" name="senha" placeholder="Senha" required>
+                <input type="password" id="confirmar_senha" name="confirmar_senha" placeholder="Confirmar senha" required><br><br>
+                
+                <!-- Campo para o nome do pet -->
+                <label for="nome_pet"><h2>Nome do Pet</h2></label>
+                <div id="pets-container">
+                    <div class="pet-block">
+                        <br>
+                        <input type="text" placeholder="Digite o nome do pet" name="pets[0][nome]" required> <br><br>
+                        
+                        <!-- Campo para selecionar o sexo do pet -->
+                        <div class="radio-group">
+                            <label>Sexo do Pet: </label> 
+                            <label class="radio-label">
+                                <input type="radio" name="pets[0][sexo]" value="macho" required> Macho
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="pets[0][sexo]" value="femea" required> Fêmea
+                            </label> 
+                        </div>
 
+                        <label>Porte do Pet: </label> 
+                        <!-- Campo para selecionar o porte do pet -->
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="pets[0][porte]" value="pequeno" required> Pequeno
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="pets[0][porte]" value="medio" required> Médio
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="pets[0][porte]" value="grande" required> Grande
+                            </label>
+                        </div><br>
 
-          <p>
-          <h2>Cadastro do Pet</h2>
-          </p>
-          <input type="text" placeholder="Nome do Pet">
-          <label>Sexo do Pet</label>
-          <label><input type="radio" id="macho" name="sexo" value="macho">Macho</label>
-          <label><input type="radio" id="femea" name="sexo" value="femea">Femea</label>
+                        <!-- Campo select para escolher a raça do pet -->
+                        <select class="select" name="pets[0][raca]" required>
+                            <option value="" disabled selected hidden>Selecione a raça</option>
+                            <option value="vira-lata">Vira-lata</option>
+                            <option value="poodle">Poodle</option>
+                            <option value="labrador">Labrador</option>
+                        </select><br>
 
-          <label>Porte do Pet</label>
-          <label><input type="radio" id="pequeno" name="porte" value="pequeno">Pequeno</label>
-          <label><input type="radio" id="medio" name="porte" value="medio">medio</label>
-          <label><input type="radio" id="grande" name="porte" value="medio">Grande</label>
-          <select id="raca">
-            <option value="" disabled selected hidden>Escreva a raça</option>
-            <option value="raca-do-amor">Raça do amor</option>
-            <option value="labrador">Labrador</option>
-            <option value="poodle">Poodle</option>
-
-          </select></br> </br>
-          
-
-          <button type="submit">Cadastrar</button>
-          <button type="reset">Limpar</button>
-          <button type="button " onclick="">&#10133 Adcionar PET</button>
-        
-        </fieldset>
-      
-      </div>
+                        <!-- Campo para envio de foto -->
+                        <label for="foto_pet">Foto do Pet:</label>
+                        <input type="file" name="pet_fotos[0]" accept="image/*"><br><br>
+                    </div>
+                </div>
+                
+                <div id="novos-pets"></div>  
+                
+                <button type="submit">Cadastrar</button>       
+                <button type="reset">Limpar</button>
+                <button type="button" onclick="adicionarPet()">➕ Adicionar Pet</button> 
+            </fieldset>
+        </div>
     </div>
-  </form>
+</form>
+
+<script>
+    let contadorPets = 1;
+
+    function adicionarPet() {
+        const container = document.getElementById('pets-container');
+        const novosPetsContainer = document.getElementById('novos-pets');
+        
+        // Clona o primeiro bloco de pet
+        const primeiroBloco = container.querySelector('.pet-block');
+        const novoBloco = primeiroBloco.cloneNode(true);
+        
+        // Atualiza todos os names para o novo índice
+        const inputs = novoBloco.querySelectorAll('input, select');
+        inputs.forEach(input => {
+            if (input.name) {
+                // Atualiza pets[0][campo] para pets[1][campo], pets[2][campo], etc.
+                if (input.name.startsWith('pets[')) {
+                    input.name = input.name.replace(/pets\[\d+\]/, `pets[${contadorPets}]`);
+                }
+                
+                // Atualiza pet_fotos[0] para pet_fotos[1], etc.
+                if (input.name.startsWith('pet_fotos[')) {
+                    input.name = `pet_fotos[${contadorPets}]`;
+                }
+            }
+            
+            // Limpa os valores
+            if (input.type === 'text') {
+                input.value = '';
+            } else if (input.type === 'select-one') {
+                input.selectedIndex = 0;
+            } else if (input.type === 'radio') {
+                input.checked = false;
+            } else if (input.type === 'file') {
+                input.value = '';
+            }
+        });
+        
+        // Adiciona o novo bloco
+        novosPetsContainer.appendChild(novoBloco);
+        contadorPets++;
+        
+        console.log(`Pet ${contadorPets} adicionado com sucesso`);
+    }
+</script>
 
 </body>
-
 </html>
